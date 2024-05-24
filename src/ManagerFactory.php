@@ -41,6 +41,7 @@ class ManagerFactory
         $payloadFactory = $this->resolverPayloadFactory($claimFactory);
 
         return make(Manager::class, compact('codec', 'blacklist', 'claimFactory', 'payloadFactory'))
+            ->setPersistentClaims($this->config['persistent_claims'])
             ->setBlacklistEnabled($this->config['blacklist_enabled']);
     }
 
